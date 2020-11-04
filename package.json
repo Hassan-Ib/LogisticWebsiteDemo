@@ -1,0 +1,15 @@
+{
+  "name": "fast-way",
+  "version": "1.0.0",
+  "description": "delivery website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "'Hassan-Ib'"
+  },
+  "author": "Hassan Ibrahim",
+  "license": "ISC"
+}

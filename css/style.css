@@ -1,0 +1,229 @@
+:root{
+    --font-size-bg: 5rem;
+    --font-weight-bg: 900;
+
+    --font-size-hd: 2.1rem;
+    --font-weight-hd: 600;
+
+    --font-size-p: 1.6rem;
+    --font-size-btn: 1.5rem;
+
+    --color-primary: white;
+    --color-primary-dark: black;
+    --color-secondary: rgba(255,0,0, 1);
+
+    --padding-btn-bg: 1rem 1.5rem;
+    --padding-btn-md: .6rem 1rem;
+    --section-padding: 10rem 5rem;
+
+    --margin-top-bg: 2rem;
+    --margin-top-md: 1rem;
+    --btn-transition: transform 300ms ease;
+
+}
+
+*,
+::after,
+::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+
+a{
+    text-decoration: none;
+    color: var(--color-primary);
+}
+p{
+    font-size: var(--font-size-p);
+}
+
+html{
+    font-size: 62.5%;
+}
+
+
+body{
+    box-sizing: border-box;
+    font-family: sans-serif;
+    line-height: 1.5;
+    letter-spacing: 1px;
+
+}
+
+
+.box{
+    width: 70%;
+    margin: 0 auto;
+}
+.header{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to left, rgba(0, 0, 0, .8), rgba(0,0,0, .8)),
+     url(/img/jeshoots-com-mSESwdMZr-A-unsplash.jpg);
+    background-position: top;
+    background-size: cover;
+    color: var(--color-primary);
+
+
+}
+
+.navigation{
+    width: 100%;
+    padding: 1em 3em;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+.logo{
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.logo .color{
+    color: transparent;
+    font-weight: 900;
+    background-image: linear-gradient(to left top, #ee9ca7 , #ffdde1);
+    -webkit-background-clip: text;
+    background-clip: text;
+
+}
+
+.hero{
+    width: 70%;
+    text-align: center;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+}
+
+.hero__text--main{
+    font-size: var(--font-size-bg);
+    font-weight: var(--font-weight-bg); 
+    line-height: 1.2;
+}
+
+.break{
+    display: block;
+}
+.hero__text--sub{
+    font-size: var(--font-size-p);
+    margin-top: var(--margin-top-bg);
+}
+
+.btn:link,
+.btn:visited{
+    display: inline-block;
+    font-size: var(--font-size-btn);
+    border: 2px solid var(--color-primary);
+    padding: var(--padding-btn-md);
+    transition: var(--btn-transition);
+    text-transform: capitalize;
+    border-radius: 5px;
+}
+.btn:hover{
+    transform: translateY(-3px);
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+}
+
+.btn:active{
+    transform: translateY(0px)
+}
+
+
+
+.hero__btn--box{
+    padding: 1rem 0;
+    margin-top: var(--margin-top-bg);
+
+}
+.hero__btn--box .btn{
+    padding: var(--padding-btn-bg);
+
+}
+
+
+.hero__btn--box .btn:first-child{
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+    margin-right: calc(var(--margin-top-md) + .5rem);
+}
+.hero__btn--box .btn:first-child:hover{
+    background-color: var(--color-primary-dark);
+}
+
+
+.cta{
+    margin-top: var(--margin-top-bg);
+}
+.icon{
+    margin-top: var(--margin-top-bg);
+    font-size: 3rem;
+    font-weight: 200;
+}
+
+.section{
+    padding: var(--section-padding);
+}
+.section__title-box{
+    width: 80%;
+    margin: 0 auto;
+    font-size: var(--font-size-hd);
+    text-align: center;
+}
+
+.about__detail{
+    text-align: center;
+}
+.section__about__description{
+    margin-top: calc(var(--margin-top-bg) + 1rem);
+    letter-spacing: .5px;
+}
+
+.about__detail .btn{
+    padding: var(--padding-btn-bg);
+    margin-top: calc(var(--margin-top-bg) + 1rem);
+    color: black;
+    border: 2px solid red;
+
+}
+.btn__about:hover{
+    color: white;
+    background-color: var(--color-secondary);
+}
+.section__services{
+    background-color: var(--color-secondary);
+    color: white;
+}
+.grid-4{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: calc(var(--margin-top-bg) + 2rem);
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: calc(var(--margin-top-bg) + 2rem);
+    justify-content: space-around
+}
+.col-1-of-4{
+    border: 2px solid var(--color-primary);
+    padding: 3rem 2rem;
+    text-align: center;
+}
+.service__title{
+    font-size: 1.8rem;
+    text-transform: capitalize;
+}
+.service__description{
+    margin-top: var(--margin-top-bg);
+    letter-spacing: .5px;
+
+}
+.grid-2{
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    
+}

@@ -28,6 +28,7 @@ const domStrings = {
   prevBtn: document.querySelector(".prev__btn"),
   nextBtn: document.querySelector(".next__btn"),
   commentParent: document.querySelector(".comment__container"),
+  pagenation: document.querySelector(".pagenation"),
 };
 
 //  on docload add the first comment in the array
@@ -61,25 +62,97 @@ const commentSettup = () => {
     });
     return markup;
   };
-  let position = 0;
+  let commentPosition = 0;
+
+  const removeClassFrom = (element, cssClass) => {
+    element.classList.remove(cssClass);
+  };
+  const addClassTo = (element, cssClass) => {
+    element.classList.add(cssClass);
+  };
+  const isClassInElement = (element, cssClass) => {
+    return element.classList.contains(cssClass);
+  };
   function checkPosition(position) {
-    if (index) {
-      return true;
-    }
-    return false;
+    const nextCss = "nextSlide";
+    const prevCss = "prevSlide";
+    const activeCss = "activeSlide";
+    // let targetCss = nextCss;
+    peoplesComment.forEach((element, elementIndex) => {
+      if (elementIndex === commentPosition) {
+        isClassInElement(element, nextCss) && removeClassFrom(element, nextCss);
+        isClassInElement(element, prevCss) && removeClassFrom(element, prevCss);
+        // targetCss = activeCss;
+        addClassTo(element, activeCss);
+        return;
+      }
+      if (elementIndex <= 0 && commentPosition >= comments.length - 1) {
+        isClassInElement(element, activeCss) &&
+          removeClassFrom(element, activeCss);
+        isClassInElement(element, prevCss) && removeClassFrom(element, prevCss);
+        addClassTo(element, nextCss);
+        return;
+      }
+      if (elementIndex >= comments.length - 1 && commentPosition === 0) {
+        isClassInElement(element, activeCss) &&
+          removeClassFrom(element, activeCss);
+        isClassInElement(element, nextCss) && removeClassFrom(element, nextCss);
+        addClassTo(element, prevCss);
+        return;
+      }
+
+      if (elementIndex > commentPosition) {
+        isClassInElement(element, activeCss) &&
+          removeClassFrom(element, activeCss);
+        isClassInElement(element, prevCss) && removeClassFrom(element, prevCss);
+        addClassTo(element, nextCss);
+        return;
+      }
+
+      if (elementIndex < commentPosition) {
+        isClassInElement(element, activeCss) &&
+          removeClassFrom(element, activeCss);
+        isClassInElement(element, nextCss) && removeClassFrom(element, nextCss);
+        addClassTo(element, prevCss);
+        return;
+      }
+    });
   }
-  // add markup to parentNode on load
+
   const peoplesComment = commentMarkUp();
   window.addEventListener("load", function () {
+    checkPosition(commentPosition);
     peoplesComment.map((person, index) => {
-      if (index !== position) {
-        person.classList.add("nextSlide");
-      } else {
-        person.classList.add("activeSlide");
-      }
       domStrings.commentParent.appendChild(person);
     });
   });
+  const nextButtonClick = () => {
+    commentPosition += 1;
+    // console.log(commentPosition);
+
+    if (commentPosition === comments.length) commentPosition = 0;
+    checkPosition(commentPosition);
+  };
+
+  const previousButtonClick = () => {
+    commentPosition -= 1;
+    // console.log(commentPosition);
+
+    if (commentPosition < 0) {
+      commentPosition = comments.length - 1;
+    }
+    checkPosition(commentPosition);
+  };
+
+  // domStrings.pagenation.addEventListener("click", (e) => {
+  //   // console.log(e.target.dataset);
+  //   if (e.target.dataset.pos || e.target.parentNode.dataset.pos) {
+  //     let value = e.target.dataset.pos || e.target.parentNode.dataset.pos;
+
+  //   }
+  // });
+  domStrings.nextBtn.addEventListener("click", nextButtonClick);
+  domStrings.prevBtn.addEventListener("click", previousButtonClick);
 };
 
 // close btn for form
